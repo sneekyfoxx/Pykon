@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling >= 1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pykon"
+version = "0.1.0a3"
+description = "A module allowing for constant and publicly immutable data."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = []
+authors = [
+    {name = "Rayshawn Levy", email = "sneekyfoxx09@gmail.com"}
+]
+maintainers = [
+    {name = "Rayshawn Levy", email = "sneekyfoxx09@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+
+[project.urls]
+Repository = "https://github.com/sneekyfoxx/Pykon.git"
