@@ -1,7 +1,7 @@
 """Pykon is a module for allowing constant and publicly immutable data."""
 
 
-from typing import Any, Union
+from typing import Any
 
 
 class PykonError(BaseException):
@@ -14,7 +14,7 @@ class PykonError(BaseException):
         else:
             return super(PykonError, cls).__new__(cls)
 
-    def __init__(self: "PykonError", message: Union[str, None], /) -> None:
+    def __init__(self: "PykonError", message: str, /) -> None:
         self.message = message
         super().__init__(self.message)
 
@@ -23,7 +23,7 @@ class Pykon(object):
     """Allow for the construction of a Pykon type."""
     __slots__: frozenset[str] = frozenset({})
 
-    def __new__(cls: type["Pykon"], kind: type[Any], data: Any) -> Union["Pykon", PykonError]:
+    def __new__(cls: type["Pykon"], kind: type[Any], data: Any) -> "Pykon":
         if not isinstance(kind, type):
             cls.error: PykonError = PykonError(f"'{kind}' must have type 'type'")
             return super(Pykon, cls).__new__(cls)
@@ -36,10 +36,11 @@ class Pykon(object):
             return super(Pykon, cls).__new__(cls)
 
     @classmethod
-    def __modify__(cls: type["Pykon"], data: Any, /) -> Union[None, PykonError]:
+    def __modify__(cls: type["Pykon"], data: Any, /) -> None:
         """Allow for the modification of data without modifying its type."""
         if not isinstance(data, cls.kind):
-            return PykonError(f"'{data}' must have type '{cls.kind.__name__}'")
+            cls.error: PykonError = PykonError(f"'{data}' must have type '{cls.kind.__name__}'")
+            return None
         else:
             cls.data = data
             return None
