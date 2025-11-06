@@ -25,9 +25,11 @@ class Pykon(object):
 
     def __new__(cls: type["Pykon"], kind: type[Any], data: Any) -> Union["Pykon", PykonError]:
         if not isinstance(kind, type):
-            return PykonError(f"'{kind}' must have type 'type'")
+            cls.error: PykonError = PykonError(f"'{kind}' must have type 'type'")
+            return super(Pykon, cls).__new__(cls)
         elif not isinstance(data, kind):
-            return PykonError(f"'{data}' must have type '{kind.__name__}'")
+            cls.error: PykonError = PykonError(f"'{data}' must have type '{kind.__name__}'")
+            return super(Pykon, cls).__new__(cls)
         else:
             cls.kind = kind
             cls.data = data
