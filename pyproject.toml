@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pykon"
-version = "0.1.0b3"
+version = "0.1.0"
 description = "A module allowing for constant and publicly immutable data."
 readme = "README.md"
 license = "MIT"
@@ -17,7 +17,7 @@ maintainers = [
     {name = "Rayshawn Levy", email = "sneekyfoxx09@gmail.com"}
 ]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",

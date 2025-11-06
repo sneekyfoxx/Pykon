@@ -19,10 +19,28 @@
 from pykon import Pykon
 from typing import Union
 
-mylist: Union[Pykon, PykonError] = Pykon(list, [1,2,3,4])
+mylist: Pykon = Pykon(list, [1,2,3,4])
 
-if type(mylist) is Pykon.PykonError:
-    raise mylist
-else:
+try:
     print(mylist.data)
+except Pykon.PykonError:
+    raise mylist.error
+
+# Using an if statement
+#
+# if hasattr(mylist, "data"):
+#    print(mylist.data)
+# else:
+#    raise mylist.error
+
+
+# Return a PykonError from a function
+#
+# def test() -> Union[None, Pykon.PykonError]:
+#     constantInt: Pykon = Pykon(int, 20)
+#     if hasattr(constantInt, "data"):
+#         print(constantInt.data)
+#         return None
+#     else:
+#         return constantInt.error
 ```
