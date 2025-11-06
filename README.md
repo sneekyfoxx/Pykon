@@ -21,16 +21,17 @@ from typing import Union
 
 mylist: Pykon = Pykon(list, [1,2,3,4])
 
-try:
-    print(mylist.data)
-except Pykon.PykonError:
+if hasattr(mylist, "error"):
     raise mylist.error
+else:
+    print(mylist.data)
 
-# Using an if statement
+
+# Using a try except block
 #
-# if hasattr(mylist, "data"):
+# try:
 #    print(mylist.data)
-# else:
+# except AttributeError:
 #    raise mylist.error
 
 
