@@ -10,9 +10,7 @@
 
 > Though, data can be modified its type cannot.
 
-> With Pykon, errors are returned rather than being raised
-
-> giving the user the ability to control when an error should be raised.
+> With Pykon, an error is stored in the error instance variable rather than being raised. This gives the user the ability to control when an error should and shouldn't be raised.
 
 ## Example
 ```python

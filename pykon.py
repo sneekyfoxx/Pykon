@@ -36,7 +36,7 @@ class Pykon(object):
             return super(Pykon, cls).__new__(cls)
 
     @classmethod
-    def __modify__(cls: type["Pykon"], data: Any, /) -> None:
+    def modify(cls: type["Pykon"], data: Any, /) -> None:
         """Allow for the modification of data without modifying its type."""
         if not isinstance(data, cls.kind):
             cls.error: PykonError = PykonError(f"'{data}' must have type '{cls.kind.__name__}'")
